@@ -1,3 +1,4 @@
+
 from flask import render_template
 import hashlib
 
@@ -40,12 +41,10 @@ def sql_injection_login_api(request, app):
     )
 
 
-def _hash_password(password):
-    md5_pass = hashlib.md5(password.encode('utf-8')).hexdigest()
-    return md5_pass
+def _hash_password(password, salt=None):
 
+    if salt is None:
+        salt = os.urandom(16)
 
-
-def _hash_password(password):
-    md5_pass = hashlib.md5(password.encode('utf-8')).hexdigest()
-    return md5_pass
+    hashed = hashlib.scrypt(password.encode('utf-8'), salt=salt, n=16384, r=8, p=1).hex()
+    return hashed, salt
