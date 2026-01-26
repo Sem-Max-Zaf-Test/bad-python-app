@@ -28,7 +28,7 @@ def sql_injection_login_api(request, app):
                 'id': u[0],
                 'username': u[1],
                 'password': u[2]
-            }, 
+            },
             db_result
         )
     )[0] if len(db_result) > 0 else None
@@ -38,6 +38,12 @@ def sql_injection_login_api(request, app):
         sql=sql,
         logged=user is not None
     )
+
+
+def _hash_password(password):
+    md5_pass = hashlib.md5(password.encode('utf-8')).hexdigest()
+    return md5_pass
+
 
 
 def _hash_password(password):
