@@ -5,6 +5,7 @@ on:
     branches:
     - main
     - master
+    - Removing_Findings_Test
     paths:
     - .github/workflows/semgrep.yml
   schedule:
