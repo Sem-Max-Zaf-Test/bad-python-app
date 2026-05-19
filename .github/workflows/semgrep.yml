@@ -22,4 +22,9 @@ jobs:
       image: semgrep/semgrep
     steps:
     - uses: actions/checkout@v4
-    - run: semgrep ci
+    - run: |
+          if [ "$ github.event_name " = "workflow_dispatch" ] && [ "$ inputs.full_scan " = "true" ]; then
+            semgrep ci --full-scan
+          else
+            semgrep ci
+          fi
