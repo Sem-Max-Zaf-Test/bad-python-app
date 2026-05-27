@@ -19,7 +19,6 @@ def sql_injection_login_api(request, app):
     password_hash = _hash_password(password)
 
     sql = f"SELECT * FROM users WHERE username='{username}' AND password='{password_hash}'"
-    flask.render_template_string(username)
 
     db_result = app.db_helper.execute_read(sql)
 
