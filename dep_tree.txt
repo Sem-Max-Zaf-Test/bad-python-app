@@ -1,0 +1,1 @@
+org.springframework.security:spring-security-web:jar:6.5.6:compile
