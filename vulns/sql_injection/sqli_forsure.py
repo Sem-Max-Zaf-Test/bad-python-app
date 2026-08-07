@@ -18,6 +18,7 @@ def sql_injection_login_api(request, app):
     password = form.get('password')
     password_hash = _hash_password(password)
 
+    #nosemgrep: python.django.security.injection.tainted-sql-string.tainted-sql-string
     sql = f"SELECT * FROM users WHERE username='{username}' AND password='{password_hash}'"
     flask.render_template_string(username)
 
