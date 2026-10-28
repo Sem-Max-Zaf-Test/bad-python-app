@@ -21,3 +21,7 @@ def route_param2(route_param):
     os.execl("static")
 
     return "ok!"
+
+# some other things to get info from
+aws_access_key_id = "AKIAIOSFODNN7EXAMLPE"
+aws_secret_access_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXEKEY"
